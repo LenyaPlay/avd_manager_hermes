@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:avd_manager_hermes/emulator_wrapper.dart';
+import 'package:avd_manager_hermes/wrappers/emulator_wrapper.dart';
 import 'package:avd_manager_hermes/models/avd.dart';
 import 'package:flutter/material.dart';
 

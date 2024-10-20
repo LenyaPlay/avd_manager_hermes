@@ -1,12 +1,13 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:avd_manager_hermes/environment.dart';
 import 'package:avd_manager_hermes/models/avd.dart';
 
 class AvdWrapper {
   Future<List<Avd>> getList() async {
     var process = await Process.start(
-      r'C:\Users\lenyaplay\AppData\Local\Android\Sdk\cmdline-tools\latest\bin\avdmanager.bat',
+      androidHome + r'\cmdline-tools\latest\bin\avdmanager.bat',
       ['list', 'avd'],
     );
 
