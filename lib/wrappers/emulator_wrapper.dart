@@ -2,27 +2,22 @@ import 'dart:convert';
 import 'dart:ffi';
 import 'dart:io';
 
+import 'package:avd_manager_hermes/environment.dart';
 import 'package:avd_manager_hermes/models/avd.dart';
 import 'package:ffi/ffi.dart';
 import 'package:win32/win32.dart';
 
 class EmulatorWrapper {
-  static const defaultExecutable =
-      r'C:\Users\lenyaplay\AppData\Local\Android\Sdk\emulator\emulator.exe';
-
-  static const defaultSkipStarts = [
+  static const skipStarts = [
     'INFO    |',
     'ERROR   |',
   ];
 
-  /// If messages begin with them, then these are some kind of logs (including error logs)
-  final List<String> skipStarts;
-  final String executable;
+  String get defaultExecutable => androidHome + r'\emulator\emulator.exe';
 
-  EmulatorWrapper({
-    this.executable = defaultExecutable,
-    this.skipStarts = defaultSkipStarts,
-  });
+  String get executable => defaultExecutable;
+
+  /// If messages begin with them, then these are some kind of logs (including error logs)
 
   Future<Process> runAvd(Avd avd) async {
     var process = await Process.start(executable, ['-avd', avd.name]);
