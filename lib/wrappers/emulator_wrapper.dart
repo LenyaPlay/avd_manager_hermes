@@ -71,10 +71,6 @@ class EmulatorWrapper {
           .then((value) => error = value),
     ]);
 
-    if (error.isNotEmpty) {
-      throw Exception(error);
-    }
-
     bool goodStart(String line) =>
         !skipStarts.any((start) => line.startsWith(start));
 
